@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+$primary-color: #1b1a17;
+$font-color: #ffffff;
+
+body {
+	background: $primary-color;
+	color: $font-color;
+	font-family: Arial, Helvetica, sans-serif;
+}

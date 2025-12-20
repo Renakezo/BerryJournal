@@ -1,0 +1,17 @@
+@import '../theme.scss';
+
+.bj-badge {
+	position: relative;
+	width: fit-content;
+
+	&-point {
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		z-index: 100;
+		width: 15px;
+		height: 15px;
+		border-radius: 50%;
+		background: $danger;
+	}
+}

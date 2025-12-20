@@ -1,0 +1,114 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    environment:
+      - MP_UI_AUTH_FILE=/etc/mailpit/auth.txt
+    volumes:
+      - ./mailpit/auth.txt:/etc/mailpit/auth.txt
+      - mailpit_data:/data
+    networks:
+      - backend
+      - nginx_network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      PMA_ARBITRARY: 0
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ABSOLUTE_URI: https://phpmyadmin.berryjournal.ru
+    networks:
+      - backend
+      - nginx_network
+
+  serverbj:
+    build:
+      context: ./server
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - backend
+      - nginx_network
+    expose:
+      - '8000'
+
+  clientbj:
+    build:
+      context: ./client
+    restart: unless-stopped
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - nginx_network
+    expose:
+      - '3000'
+
+  elma:
+    build:
+      context: ./ElmaService
+    container_name: elma
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:77
+    networks:
+      - nginx_network
+    volumes:
+      - /ElmaService/wwwroot:/app/wwwroot
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8000:8000'
+    volumes:
+      - ./nginx/berryjournal.conf:/etc/nginx/conf.d/berryjournal.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./client/public:/var/www/html
+    depends_on:
+      - clientbj
+      - serverbj
+      - phpmyadmin
+      - elma
+    networks:
+      - nginx_network
+
+networks:
+  backend:
+    driver: bridge
+  nginx_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  mailpit_data:

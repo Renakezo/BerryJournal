@@ -1,0 +1,31 @@
+@import '../theme.scss';
+
+.bj-menu-item {
+	display: flex;
+	align-items: center;
+	// filter: grayscale(1);
+	// color: $font-second-color;
+	color: $font-color;
+	transition: 0.3s;
+	padding: 5px 10px;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	cursor: pointer;
+	&:hover {
+		background: $primary-color;
+	}
+
+	&-select {
+		color: $font-color;
+		background: $primary-color;
+		// filter: grayscale(0);
+	}
+	&-img {
+		width: 22px;
+		margin-right: 15px;
+	}
+	&-title {
+		font-size: 16px;
+		margin: 0;
+	}
+}

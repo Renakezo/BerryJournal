@@ -1,0 +1,90 @@
+@import '../theme.scss';
+
+.bj-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(255, 255, 255, 0.15);
+	display: flex;
+	justify-content: center;
+	z-index: 1000;
+	animation: open 0.6s;
+
+	&--up {
+		align-items: start;
+	}
+
+	&--down {
+		align-items: end;
+	}
+
+	&--center {
+		align-items: center;
+	}
+
+	&-close {
+		width: 100%;
+		display: flex;
+		justify-content: end;
+	}
+
+	&-content {
+		animation: openContent 1s;
+		background-color: $secondary-color;
+		padding: 20px 40px 40px;
+		border-radius: 8px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		max-width: 80%;
+		max-height: 90vh;
+		overflow-y: auto;
+		font-weight: 300;
+
+		&-title {
+			color: $font-color;
+			font-size: 30px;
+			margin: 0 0 15px;
+
+			&--left {
+				text-align: left;
+			}
+			&--right {
+				text-align: right;
+			}
+			&--center {
+				text-align: center;
+			}
+		}
+
+		&-text {
+			font-size: 16px;
+			color: $font-color;
+			margin-bottom: 20px;
+		}
+
+		&-footer {
+			& > button:nth-child(even) {
+				margin: 0 10px;
+			}
+		}
+	}
+
+	@keyframes open {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes openContent {
+		from {
+			transform: scale(0);
+		}
+		to {
+			transform: scale(1);
+		}
+	}
+}

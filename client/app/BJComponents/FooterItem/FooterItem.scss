@@ -1,0 +1,36 @@
+@import '../theme.scss';
+.bj-menu-footer {
+	border-top: 1px solid $font-color;
+	padding: 15px;
+	display: flex;
+	&--user {
+		flex-grow: 1;
+		display: flex;
+		&-image {
+			max-width: 40px;
+			max-height: 40px;
+		}
+		&--right {
+			padding: 0 10px;
+			&-name {
+				font-size: 15px;
+				margin: 0;
+			}
+			&-role {
+				font-size: 13px;
+				margin: 0;
+			}
+		}
+	}
+
+	&--logout {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&-img {
+			cursor: pointer;
+			max-width: 22px;
+			max-height: 24px;
+		}
+	}
+}

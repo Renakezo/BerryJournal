@@ -1,0 +1,30 @@
+@import '../theme.scss';
+
+.bj-skeleton {
+	border-radius: 13px;
+	position: relative;
+	overflow: hidden;
+	background-color: darken($font-color, 80%);
+
+	&::after {
+		position: absolute;
+		content: '';
+		inset: 0;
+		background-image: linear-gradient(
+			90deg,
+			transparent,
+			darken($font-color, 50%)
+		);
+		animation: skeleton 1.6s ease-out infinite;
+	}
+
+	@keyframes skeleton {
+		0% {
+			transform: translateX(-100%);
+		}
+
+		100% {
+			transform: translateX(200%);
+		}
+	}
+}

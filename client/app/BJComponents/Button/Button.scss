@@ -1,0 +1,133 @@
+@import '../theme.scss';
+
+.bj-button {
+	cursor: pointer;
+	border: 0;
+	border-radius: 10px;
+	line-height: 1;
+	font-weight: 300;
+	transition: 0.3s;
+
+	&--normal {
+		background-color: $button-color;
+		color: $font-color;
+		&:hover {
+			background-color: lighten($button-color, 10%);
+		}
+	}
+	&--outlined {
+		border: 2px solid $button-color;
+		background-color: transparent;
+		color: $font-color;
+		&:hover {
+			background-color: #ffffff2b;
+			border-color: lighten($button-color, 10%);
+		}
+	}
+	&--info {
+		background-color: $info;
+		color: $font-color;
+		&:hover {
+			background-color: lighten($info, 10%);
+		}
+	}
+	&--success {
+		background-color: $success;
+		color: $font-color;
+		&:hover {
+			background-color: lighten($success, 10%);
+		}
+	}
+	&--warning {
+		background-color: $warning;
+		color: $font-color;
+		&:hover {
+			background-color: lighten($warning, 10%);
+		}
+	}
+	&--danger {
+		background-color: $danger;
+		color: $font-color;
+		&:hover {
+			background-color: lighten($danger, 10%);
+		}
+	}
+	&--utility {
+		background-color: $utility;
+		color: $font-color;
+		&:hover {
+			background-color: lighten($utility, 10%);
+		}
+	}
+	&--outlined-info {
+		border: 2px solid $info;
+		background-color: transparent;
+		color: $font-color;
+		&:hover {
+			background-color: #ffffff2b;
+			border-color: lighten($info, 10%);
+		}
+	}
+	&--outlined-success {
+		border: 2px solid $success;
+		background-color: transparent;
+		color: $font-color;
+		&:hover {
+			background-color: #ffffff2b;
+			border-color: lighten($success, 10%);
+		}
+	}
+	&--outlined-warning {
+		border: 2px solid $warning;
+		background-color: transparent;
+		color: $font-color;
+		&:hover {
+			background-color: #ffffff2b;
+			border-color: lighten($warning, 10%);
+		}
+	}
+	&--outlined-danger {
+		border: 2px solid $danger;
+		background-color: transparent;
+		color: $font-color;
+		&:hover {
+			background-color: #ffffff2b;
+			border-color: lighten($danger, 10%);
+		}
+	}
+	&--outlined-utility {
+		border: 2px solid $utility;
+		background-color: transparent;
+		color: $font-color;
+		&:hover {
+			background-color: #ffffff2b;
+			border-color: lighten($utility, 10%);
+		}
+	}
+
+	&--s {
+		padding: 10px 16px;
+		font-size: 16px;
+	}
+	&--m {
+		padding: 15px 20px;
+		font-size: 18px;
+	}
+	&--l {
+		padding: 12px 25px;
+		font-size: 20px;
+	}
+	&--xl {
+		padding: 12px 30px;
+		font-size: 22px;
+	}
+	&--max {
+		width: 100%;
+	}
+
+	&:disabled {
+		cursor: default;
+		pointer-events: none;
+		filter: brightness(0.6);
+	}
+}

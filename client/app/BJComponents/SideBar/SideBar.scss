@@ -1,0 +1,37 @@
+@import '../theme.scss';
+
+.bj-sidebar {
+	background-color: $secondary-color;
+	min-width: 250px;
+	height: 100vh;
+	color: $font-color;
+	display: flex;
+	flex-direction: column;
+
+	&--header {
+		display: flex;
+		width: 100%;
+		padding: 20px 0;
+		justify-content: center;
+		align-items: center;
+		&-logo {
+			width: 34px;
+			margin: 0 10px 0 0;
+		}
+		&-title {
+			font-weight: bold;
+			margin: 0;
+			font-size: 20px;
+		}
+	}
+
+	&--body {
+		flex-grow: 1;
+		padding: 0 20px 20px;
+	}
+
+	&--footer {
+		justify-self: end;
+		width: 100%;
+	}
+}

@@ -112,6 +112,7 @@ cd BerryJournal
 # Скопируйте примеры конфигурационных файлов
 cp server/.env.example server/.env
 cp client/.env.example client/.env
+cp .env.example .env
 ```
 
 Заполните конфигурационные файлы своими данными
